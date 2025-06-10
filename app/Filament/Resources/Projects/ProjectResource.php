@@ -11,12 +11,14 @@ use App\Filament\Resources\Projects\Schemas\ProjectInfolist;
 use App\Filament\Resources\Projects\Tables\ProjectsTable;
 use App\Models\Project;
 use BackedEnum;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class ProjectResource extends Resource
 {
@@ -24,6 +26,7 @@ class ProjectResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    protected static UnitEnum|string|null $navigationGroup = 'Projects';
 
     public static function form(Schema $schema): Schema
     {
@@ -46,6 +49,15 @@ class ProjectResource extends Resource
             //
         ];
     }
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            ViewProject::class,
+            EditProject::class,
+        ]);
+    }
+
+
 
     public static function getPages(): array
     {
