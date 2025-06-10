@@ -25,7 +25,7 @@ class TicketResource extends Resource
 
     protected static ?string $navigationParentItem = 'Projects';
 
-    protected static UnitEnum|string|null $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = 'Shop';
 
     public static function form(Schema $schema): Schema
     {
