@@ -57,6 +57,10 @@ class ProjectResource extends Resource
         ]);
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return self::getEloquentQuery()->count();
+    }
 
 
     public static function getPages(): array
