@@ -19,7 +19,7 @@ class TicketStaffSeeder extends Seeder
 
         foreach ($tickets as $ticket) {
             // Create tickets for each project
-            TicketStaff::factory(10)
+            TicketStaff::factory(2)
                 ->create([
                     'ticket_id' => $ticket->id,
                     'project_member_id' => $ticket->project->members->first() ?? ProjectMember::factory()->create()

@@ -33,7 +33,7 @@ class ProjectLabelSeeder extends Seeder
             }
 
             // Create additional random labels
-            ProjectLabel::factory(3)->create(['project_id' => $project->id]);
+            ProjectLabel::factory(2)->create(['project_id' => $project->id]);
         }
     }
 }
