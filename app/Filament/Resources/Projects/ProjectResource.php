@@ -46,18 +46,14 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TicketsRelationManager::class,
         ];
     }
-    public static function getRecordSubNavigation(Page $page): array
+
+    public static function getNavigationBadge(): ?string
     {
-        return $page->generateNavigationItems([
-            ViewProject::class,
-            EditProject::class,
-        ]);
+        return once(fn() => self::getEloquentQuery()->count());
     }
-
-
 
     public static function getPages(): array
     {

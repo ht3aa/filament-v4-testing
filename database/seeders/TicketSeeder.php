@@ -17,7 +17,7 @@ class TicketSeeder extends Seeder
 
         foreach ($projects as $project) {
             // Create tickets for each project
-            Ticket::factory(10)
+            Ticket::factory(3)
                 ->for($project)
                 ->for($project->statuses->random(), 'projectStatus')
                 ->for($project->labels->random(), 'projectLabel')

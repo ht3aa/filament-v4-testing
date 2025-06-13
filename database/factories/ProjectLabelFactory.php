@@ -19,9 +19,10 @@ class ProjectLabelFactory extends Factory
     {
         $baseTitles = ['Bug', 'Feature', 'Enhancement', 'Documentation', 'Urgent'];
         $baseTitle = fake()->randomElement($baseTitles);
+        $adjectives = ['Critical', 'Major', 'Minor', 'Important', 'Optional', 'Quick', 'Complex', 'Simple', 'Advanced', 'Basic'];
 
         return [
-            'title' => $baseTitle.' '.fake()->unique()->numberBetween(1, 1000),
+            'title' => fake()->randomElement($adjectives) . ' ' . $baseTitle,
             'description' => fake()->sentence(),
             'color' => fake()->hexColor(),
             'project_id' => Project::factory(),

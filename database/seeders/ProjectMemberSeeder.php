@@ -17,7 +17,7 @@ class ProjectMemberSeeder extends Seeder
 
         foreach ($projects as $project) {
             // Create project members
-            ProjectMember::factory(5)->create(['project_id' => $project->id]);
+            ProjectMember::factory(3)->create(['project_id' => $project->id]);
         }
     }
 }
