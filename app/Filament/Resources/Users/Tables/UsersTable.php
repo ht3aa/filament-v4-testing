@@ -49,7 +49,7 @@ class UsersTable
                 Action::make('activate')
                     ->label('Activate')
                     ->icon('heroicon-o-check-circle')
-                    ->visible(fn(User $record) => !$record->active)
+                    ->hidden(fn(User $record) => $record->active)
                     ->color('success')
                     ->action(function (User $record) {
                         $record->update(['active' => true]);
@@ -57,7 +57,7 @@ class UsersTable
                 Action::make('deactivate')
                     ->label('Deactivate')
                     ->icon('heroicon-o-x-circle')
-                    ->visible(fn(User $record) => $record->active)
+                    ->hidden(fn(User $record) => !$record->active)
                     ->color('danger')
                     ->action(function (User $record) {
                         $record->update(['active' => false]);
