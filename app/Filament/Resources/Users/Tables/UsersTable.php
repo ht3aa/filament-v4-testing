@@ -11,6 +11,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use App\Models\User;
+use Filament\Tables\Filters\Filter;
 
 class UsersTable
 {
@@ -42,7 +43,11 @@ class UsersTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Filter::make('active')
+                    ->toggle()
+                    ->query(fn($query, $data) => $query->where('active', $data['isActive']))
+
+                    ->label('Active')
             ])
             ->recordActions([
                 ViewAction::make(),
